@@ -57,3 +57,4 @@ $router->all('/gozarani',function(\ZXE\Request $req){
     return '<h1>An nyeong haseyo</h1>';
 });
 ```
+### 파라미터
