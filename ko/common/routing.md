@@ -32,7 +32,7 @@ class WebRoutes implements EntryPoint{
 
 예를 들어 `http://your-domain.kr/gozarani` 에 접속해서 `<h1>An nyeong haseyo</h1>`라는 응답이 돌아오도록 할 때
 다음과 같이 첫 인자에 경로를, 두번째 인자에 `Closure`를 집어넣어 다음과 같이 만들 수 있습니다.  
-여기서 두번째 인자의 `Closure`는 첫번째 인자로 `\ZXE\Request` 객체를 받아야 합니다.
+여기서 두번째 인자의 `Closure`는 첫번째 인자로 `\ZXE\Request` 객체를 받아야 합니다.(사실 타입을 지정해줄 필요는 없습니다)
 ```php
 $router->get('/gozarani',function(\ZXE\Request $req){
     return '<h1>An nyeong haseyo</h1>';
@@ -58,3 +58,24 @@ $router->all('/gozarani',function(\ZXE\Request $req){
 });
 ```
 ### 파라미터
+몇몇 사이트를 보면 `https://namu.wiki/w/BASE64`,`https://github.com/kmoon2437/gozarani` 처럼 url에 직접 파라미터를 넣게 되는데,
+이런 라우트는 아래와 같이 사용합니다.
+```php
+$router->get('/pok8/:level',function(\ZXE\Request $req){
+    return '<h1>'.$req->param['level'].'단 폭☆8</h1>';
+});
+```
+
+특정 파라미터를 선택적으로 넣고 싶다면 아래와 같이 파라미터명 뒤에 `?` 를 입력합니다.
+```php
+$router->get('/pok8/:level?',function(\ZXE\Request $req){
+    return '<h1>'.($req->param['level'] ?? 3).'단 폭☆8</h1>';
+});
+```
+
+정규식을 통해 파라미터의 포맷을 제한하고 싶다면 다음과 같이 `filter(string $varname,string $regex)` 함수를 호출합니다.
+```php
+$router->get('/pok8/:level',function(\ZXE\Request $req){
+    return '<h1>'.$req->param['level'].'단 폭☆8</h1>';
+})->filter('level','[0-9]+');
+```
