@@ -73,9 +73,9 @@ $router->get('/pok8/:level?',function(\ZXE\Request $req){
 });
 ```
 
-정규식을 통해 파라미터의 포맷을 제한하고 싶다면 다음과 같이 `filter(string $varname,string $regex)` 함수를 호출합니다.
+정규식을 통해 파라미터의 포맷을 제한하려면 다음과 같이 변수명 뒤에 정규식 패턴을 입력합니다.
 ```php
-$router->get('/pok8/:level',function(\ZXE\Request $req){
-    return '<h1>'.$req->param['level'].'단 폭☆8</h1>';
-})->filter('level','[0-9]+');
+$router->get('/pok8/:level([0-9]+)',function(\ZXE\Request $req){
+    return '<h1>'.$req->param['level'].'단 폭☆8</h1>'; // level이 숫자가 아니면 404 응답이 돌아옴
+});
 ```
