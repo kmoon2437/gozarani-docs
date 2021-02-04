@@ -40,3 +40,20 @@ $router->get('/gozarani',function(\ZXE\Request $req){
 ```
 
 이때 `Closure` 객체가 문자열을 반환하면, 고자라니는 해당 문자열을 그대로 출력합니다.
+### 사용 가능한 http 메서드
+고자라니의 라우터는 다음의 http 메서드에 해당하는 라우터를 등록할 수 있습니다.
+```php
+$router->get(string $path,$callback);
+$router->post(string $path,$callback);
+$router->put(string $path,$callback);
+$router->patch(string $path,$callback);
+$router->delete(string $path,$callback);
+```
+
+때로는 모든 http 메서드에 대응하는 라우트가 필요할 때가 있습니다.
+그럴 땐 `$router->all(string $path,$callback)` 함수를 사용할 수 있습니다.
+```php
+$router->all('/gozarani',function(\ZXE\Request $req){
+    return '<h1>An nyeong haseyo</h1>';
+});
+```
