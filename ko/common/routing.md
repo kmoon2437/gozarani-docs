@@ -79,3 +79,22 @@ $router->get('/pok8/:level([0-9]+)',function(\ZXE\Request $req){
     return '<h1>'.$req->param['level'].'단 폭☆8</h1>'; // level이 숫자가 아니면 404 응답이 돌아옴
 });
 ```
+
+변수명 뒤에 다음과 같이 `+` 을 넣으면 이후에 나오는 슬래시(`/`)를 무시합니다.
+```php
+$router->get('/pok8/:level+',function(\ZXE\Request $req){
+    /*
+    이렇게 할 시 /pok8/1972/trigger 에 접속하면
+    $req->param['level'] 에 '1972/trigger' 가 할당됨
+    결과적으로, <h1>1972/trigger단 폭☆8</h1> 이 응답으로 돌아옴
+    */
+    return '<h1>'.$req->param['level'].'단 폭☆8</h1>';
+});
+```
+
+변수명 뒤에 다음과 같이 `*` 을 넣으면 `+`을 넣은 것과 동일하나, 선택 파라미터가 됩니다.
+```php
+$router->get('/pok8/:level*',function(\ZXE\Request $req){
+    return '<h1>'.$req->param['level'].'단 폭☆8</h1>';
+});
+```
