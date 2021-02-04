@@ -23,11 +23,11 @@ class WebRoutes implements EntryPoint{
 }
 ```
 
-위 코드에서 봤듯이 라우터 클래스는 `\ZXE\EntryPoint` 인터페이스를 구현해야 합니다.
+위 코드에서 봤듯이 라우터 클래스는 `\ZXE\EntryPoint` 인터페이스를 구현해야 하며, `get_routes()` 함수는 첫번째 인자로 `\ZXE\Router` 객체를 참조 변수로 받아야 합니다.
 
-기본 제공되는 라우터 파일이 있지만, 원한다면 `classes/App/GozarnaiRoutes.php` 처럼 라우터 파일을 따로 만들어 사용할 수도 있습니다.
+기본 제공되는 라우터 파일이 있지만, 원한다면 `classes/App/GozarnaiRoutes.php` 처럼 라우터 파일을 따로 만들어 사용할 수도 있습니다.  
 이 경우 `gozarani.json` 파일의 `app.main_class` 변수에 사용할 라우터 클래스명 전체를 지정해야 합니다.
 ### 기본적인 라우트
-
+> Note: 여기부터는 \ZXE\Router 객체의 변수명이 $router 인 것으로 가정하고 설명합니다.
 ```php
 ```
