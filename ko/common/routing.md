@@ -97,7 +97,7 @@ $router->get('/index.goza',function(Req $req){
 ### 알림창
 클라이언트에서 `JavaScript`의 `alert()` 함수를 호출해 알림창을 표시합니다.
 아래와 같이 `Closure`에서 `\ZXE\Response::alert(string $msg,string $url = '')` 을 사용합니다.
-> Note: 두번째 인자에 url을 집어넣으면 알림창을 닫았을때
+> Note: 두번째 인자는 생략 가능하며, 여기에 url을 집어넣으면 알림창을 닫았을때
 `JavaScript`의 `location.replace()` 함수를 사용해 해당 url로 리다이렉트 합니다.
 ```php
 $router->get('/pok8',function(Req $req){
