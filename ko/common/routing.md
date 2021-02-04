@@ -29,6 +29,7 @@ class WebRoutes implements EntryPoint{
 이 경우 `gozarani.json` 파일의 `app.main_class` 변수에 사용할 라우트 클래스명 전체를 지정해야 합니다.
 ### 기본적인 라우트
 > Note: 여기부터는 \ZXE\Router 객체의 변수명이 $router 인 것으로 가정하고 설명합니다.
+
 예를 들어 `http://your-domain.kr/gozarani` 에 접속해서 `<h1>An nyeong haseyo</h1>`라는 응답이 돌아오도록 할 때
 다음과 같이 첫 인자에 경로를, 두번째 인자에 `Closure`를 집어넣어 다음과 같이 만들 수 있습니다.  
 여기서 두번째 인자의 `Closure`는 첫번째 인자로 `\ZXE\Request` 객체를 받아야 합니다.
